@@ -49,7 +49,8 @@ angle  = np.linspace(0, 2*np.pi, 500)
 eleccol = 'k'
 pointcol = 'C0'
 
-fig, axes = plt.subplots(1,3, figsize = (13, 13))
+plt.rcParams.update({'font.size': 16})
+fig, axes = plt.subplots(1,3, figsize=(16,9), gridspec_kw={'width_ratios': [1, 1, 0.869]})
 ax = axes[1]
 ay = axes[0]
 az = axes[2]
@@ -60,6 +61,7 @@ ax.plot(lostz, lostx, 'o', color = pointcol)
 ax.set_title("Y Slice")  
 ax.set_xlabel("z [mm]")
 ax.set_ylabel("x [mm]")
+ax.set_ylim(-5,5)
 
 ay.plot(zplot, ytop, color = eleccol)
 ay.plot(zplot, ybot, color = eleccol)
@@ -67,17 +69,19 @@ ay.plot(lostz, losty, 'o', color = pointcol)
 ay.set_title("X Slice")  
 ay.set_xlabel("z [mm]")
 ay.set_ylabel("y [mm]")
+ay.set_ylim(-118,-108)
 
 az.plot(radius*np.cos(angle), radius*np.sin(angle)-113 , color = eleccol)
 #az.plot(big*np.cos(angle), big*np.sin(angle)-113 , color = 'none')
 az.plot(lostx,losty, 'o', color = pointcol)
-#az.set_ylim(-118.5,-107.5)
 az.set_title("Z Slice")  
 az.set_xlabel("x [mm]")
 az.set_ylabel("y [mm]")
 
 for i in range(0,3):
-    axes[i].set_aspect('equal', 'box')
+    axes[i].set_aspect('equal','box')
+    axes[i].tick_params(axis="x",direction="in", top="on",labelbottom="on")
+    axes[i].tick_params(axis="y",direction="in", right="on",labelleft="on")
 
 fig.tight_layout()
 fig.savefig("splats.pdf", bbox_inches = 'tight', pad_inches = 0.1, transparent=True)
