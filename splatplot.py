@@ -19,7 +19,7 @@ def bottom(x, cham):
         return -x-219.5
 
 #expected txt file: ion number, tof, x, y, z, kinetic energy
-n,t,x,y,z,k = np.genfromtxt( "splats1cham.txt", unpack=True, skip_header=87, skip_footer=1, autostrip=True)
+n,t,x,y,z,k = np.genfromtxt( "splats1cham_new.txt", unpack=True, skip_header=87, skip_footer=1, autostrip=True)
 
 cham = 1  #number of chamfers
 
@@ -96,5 +96,5 @@ for i in range(0,3):
     axes[i].tick_params(axis="y",direction="in", right="on",labelleft="on")
 
 fig.tight_layout()
-fig.savefig("splats"+str(cham)+"cham.pdf", bbox_inches = 'tight', pad_inches = 0.1, transparent=True)
-fig.savefig("splats"+str(cham)+"cham.png", bbox_inches = 'tight', pad_inches = 0.1, transparent=True)
+fig.savefig("splats"+str(cham)+"cham_new.pdf", bbox_inches = 'tight', pad_inches = 0.1, transparent=True)
+fig.savefig("splats"+str(cham)+"cham_new.png", bbox_inches = 'tight', pad_inches = 0.1, transparent=True)
